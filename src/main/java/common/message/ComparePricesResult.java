@@ -1,4 +1,4 @@
-package message;
+package common.message;
 
 public class ComparePricesResult {
     public final String message;

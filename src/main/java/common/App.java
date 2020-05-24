@@ -1,7 +1,9 @@
+package common;
+
 import akka.actor.ActorRef;
 import akka.actor.ActorSystem;
 import akka.actor.Props;
-import message.UpdateDbRequest;
+import http.HttpServer;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -23,6 +25,7 @@ public class App {
 
         final ActorSystem system = ActorSystem.create(systemName);
         final ActorRef serverRef = system.actorOf(Props.create(Server.class), "server");
+        final HttpServer httpServer = new HttpServer(system, serverRef);
 
         IntStream.range(0, noOfClients).forEach(i -> {
             clients.add(system.actorOf(Props.create(Client.class)));
@@ -31,8 +34,6 @@ public class App {
 //        IntStream.range(0, noOfClients).forEach(i -> {
 //            clients.get(i).tell("msg"+i, null);
 //        });
-
-
 
 
         while (true) {

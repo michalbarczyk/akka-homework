@@ -1,5 +1,7 @@
+package common;
+
 import akka.actor.AbstractActor;
-import message.ComparePricesResult;
+import common.message.ComparePricesResult;
 
 public class Client extends AbstractActor {
 
@@ -8,7 +10,9 @@ public class Client extends AbstractActor {
     @Override
     public Receive createReceive() {
         return receiveBuilder()
-                .match(String.class, msg -> getContext().actorSelection(serverPath).tell(msg, getSelf()))
+                .match(String.class, msg -> {
+                    getContext().actorSelection(serverPath).tell(msg, getSelf());
+                })
                 .match(ComparePricesResult.class, msg -> System.out.println(msg.message))
                 .build();
     }

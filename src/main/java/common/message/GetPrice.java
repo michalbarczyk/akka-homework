@@ -1,4 +1,4 @@
-package message;
+package common.message;
 
 public class GetPrice {
 

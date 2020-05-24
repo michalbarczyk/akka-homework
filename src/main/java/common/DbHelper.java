@@ -1,5 +1,7 @@
+package common;
+
 import akka.actor.AbstractActor;
-import message.UpdateDbRequest;
+import common.message.UpdateDbRequest;
 import java.sql.*;
 
 public class DbHelper extends AbstractActor {

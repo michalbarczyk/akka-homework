@@ -1,5 +1,7 @@
+package common;
+
 import akka.actor.AbstractActor;
-import message.GetPrice;
+import common.message.GetPrice;
 
 import java.util.concurrent.ThreadLocalRandom;
 
